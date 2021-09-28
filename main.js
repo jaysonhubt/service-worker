@@ -8,7 +8,7 @@ if (window.Notification && Notification.permission === "granted") {
 			console.log('Register service worker failed', err);
 		});
 	}
-} else if (window.Notification && Notification.permission === "denied") {
+} else if (window.Notification && Notification.permission === "denied" && Notification.permission === "default") {
 	Notification.requestPermission().then(function (status) {
         // If the user said okay
         if (status === "granted") {
