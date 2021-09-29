@@ -1,21 +1,20 @@
 if (window.Notification && Notification.permission === "granted") {
 	if ('serviceWorker' in navigator) {
-		const window = window;
-		navigator.serviceWorker.addEventListener('notificationclick', function(event) {
-			event.notification.close();
-			if (event.action === 'archive') {
-				console.log('archive')
-			} else if (event.action === 'test') {
-				// Main body of notification was clicked
-				alert('test')
-			} else {
-				// Main body of notification was clicked
-				window.focus()
-			}
-		});
 		navigator.serviceWorker.register('service_worker.js')
 		.then(reg => {
 			console.log('Registered service worker');
+			reg.addEventListener('notificationclick', function(event, window) {
+				event.notification.close();
+				if (event.action === 'archive') {
+					console.log('archive')
+				} else if (event.action === 'test') {
+					// Main body of notification was clicked
+					alert('test')
+				} else {
+					// Main body of notification was clicked
+					window.focus()
+				}
+			});
 			reg.showNotification('title', { body: 'text', actions: [{action: 'archive', title: 'Archive'}, {action: 'test', title: 'Test'}] });
 		}).catch(err => {
 			console.log('Register service worker failed', err);
