@@ -69,3 +69,7 @@ self.addEventListener('fetch', event => {
     );
   }
 });
+
+self.addEventListener('notificationclick', function () {
+  console.log('serviceWorker.js notificationclick')
+})
