@@ -1,14 +1,8 @@
 if (window.Notification && Notification.permission === "granted") {
 	if ('serviceWorker' in navigator) {
-		navigator.serviceWorker.addEventListener('notificationclick', function () {
-			console.log('serviceWorker notificationclick')
-		})
 		navigator.serviceWorker.register('service_worker.js')
-		.then(function (reg) {
+		.then(reg => {
 			console.log('Registered service worker');
-			reg.addEventListener('notificationclick', function () {
-				console.log('notificationclick')
-			})
 			reg.showNotification(
 				'着信-Son',
 				{

@@ -70,6 +70,17 @@ self.addEventListener('fetch', event => {
   }
 });
 
-self.addEventListener('notificationclick', function () {
+self.addEventListener('notificationclick', function (event) {
   console.log('serviceWorker.js notificationclick')
+  event.waitUntil(self.clients.matchAll({
+    type: "window"
+  }).then(function(clientList) {
+    for (let i = 0; i < clientList.length; i++) {
+      const client = clientList[i];
+      if (client.url === '/' && 'focus' in client)
+        return client.focus();
+    }
+    if (self.clients.openWindow)
+      return self.clients.openWindow('/');
+  }));
 })
