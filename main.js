@@ -1,6 +1,6 @@
 if (window.Notification && Notification.permission === "granted") {
 	if ('serviceWorker' in navigator) {
-		const window = window
+		const window = window;
 		navigator.serviceWorker.addEventListener('notificationclick', function(event) {
 			event.notification.close();
 			if (event.action === 'archive') {
