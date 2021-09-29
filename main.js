@@ -1,8 +1,14 @@
 if (window.Notification && Notification.permission === "granted") {
 	if ('serviceWorker' in navigator) {
+		navigator.serviceWorker.addEventListener('notificationclick', function () {
+			console.log('serviceWorker notificationclick')
+		})
 		navigator.serviceWorker.register('service_worker.js')
 		.then(function (reg) {
 			console.log('Registered service worker');
+			reg.addEventListener('notificationclick', function () {
+				console.log('notificationclick')
+			})
 			reg.showNotification(
 				'着信-Son',
 				{
@@ -19,9 +25,6 @@ if (window.Notification && Notification.permission === "granted") {
 					]
 				}
 			);
-			reg.addEventListener('notificationclick', function () {
-				console.log('notificationclick')
-			})
 		}).catch(err => {
 			console.log('Register service worker failed', err);
 		});
