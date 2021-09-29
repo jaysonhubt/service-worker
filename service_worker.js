@@ -69,16 +69,3 @@ self.addEventListener('fetch', event => {
     );
   }
 });
-
-self.addEventListener('notificationclick', function(event) {
-  event.notification.close();
-  if (event.action === 'archive') {
-    console.log('archive')
-  } else if (event.action === 'test') {
-    // Main body of notification was clicked
-    alert('test')
-  } else {
-    // Main body of notification was clicked
-    window.focus()
-  }
-}, false);

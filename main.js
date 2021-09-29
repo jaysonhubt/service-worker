@@ -1,5 +1,17 @@
 if (window.Notification && Notification.permission === "granted") {
 	if ('serviceWorker' in navigator) {
+		navigator.serviceWorker.addEventListener('notificationclick', function(event) {
+			event.notification.close();
+			if (event.action === 'archive') {
+				console.log('archive')
+			} else if (event.action === 'test') {
+				// Main body of notification was clicked
+				alert('test')
+			} else {
+				// Main body of notification was clicked
+				window.focus()
+			}
+		});
 		navigator.serviceWorker.register('service_worker.js')
 		.then(reg => {
 			console.log('Registered service worker');
