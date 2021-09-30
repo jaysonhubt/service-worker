@@ -1,32 +1,12 @@
 if (window.Notification && Notification.permission === "granted") {
 	let notify1 = new Notification('Hi there!', {
-		body: 'Content',
-		actions: [
-			{
-				action: 'button1',
-				title: 'Button 1'
-			},
-			{
-				action: 'button2',
-				title: 'Button 2'
-			}
-		]
+		body: 'Content'
 	})
 	notify1.onclick = function () {
 		window.parent.parent.focus();
 	};
 	let notify2 = new Notification('Goodbye', {
-		body: 'Content',
-		actions: [
-			{
-				action: 'button1',
-				title: 'Button 1'
-			},
-			{
-				action: 'button2',
-				title: 'Button 2'
-			}
-		]
+		body: 'Content'
 	})
 	notify2.onclick = function () {
 		window.parent.parent.focus();
