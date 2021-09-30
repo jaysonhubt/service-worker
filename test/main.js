@@ -1,6 +1,12 @@
 if (window.Notification && Notification.permission === "granted") {
-	new Notification('Hi there!')
-	new Notification('Goodbye')
+	let notify1 = new Notification('Hi there!')
+	notify1.onclick = function () {
+		window.parent.parent.focus();
+	};
+	let notify2 = new Notification('Goodbye')
+	notify2.onclick = function () {
+		window.parent.parent.focus();
+	};
 }
 else if (window.Notification) {
 	try {
